@@ -1,3 +1,4 @@
 
-export * as customLogger from "./src/logger";
+import * as customLogger from "./src/logger";
 
+module.exports = customLogger;
