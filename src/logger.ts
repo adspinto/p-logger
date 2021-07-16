@@ -1,6 +1,7 @@
 import { defaults } from "./config/defaults";
 import { buildMethodString } from "./stringbuilder";
 import { updateCounter } from "./counter";
+import { AxiosError, AxiosResponse } from "axios";
 
 export const customLogger = {
     /**
@@ -14,7 +15,7 @@ export const customLogger = {
      * @param config Axios response
      * @returns logs the data
      */
-    success: (response) => {
+    success: (response: AxiosResponse): AxiosResponse => {
         const { config, status, data } = response;
         console.groupCollapsed(
             defaults.tldr,
@@ -32,18 +33,22 @@ export const customLogger = {
             config,
         });
         console.groupEnd();
-        return config;
+        return response;
     },
     /**
      * Custom Logger to show simple data and detailed data colapsed from axios errors
      * @param error Axios error
      * @returns logs the error data
      */
-    error: (error) => {
+    error: (error: AxiosError): Promise<AxiosError> => {
         const info = error.response;
-        updateCounter(defaults.response);
-        updateCounter(defaults.error);
-        console.groupCollapsed(defaults.tldr, buildMethodString(info, defaults.error), info.config.url, info.status);
+        console.groupCollapsed(
+            defaults.tldr, 
+            buildMethodString(info, defaults.error), 
+            defaults.errorNumber,
+            updateCounter(defaults.error), 
+            info.config.url, info.status
+        );
         console.log({
             baseURL: info.config.baseURL,
             url: info.config.url,
