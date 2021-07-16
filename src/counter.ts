@@ -1,9 +1,12 @@
-export const counter = {
+const counter = {
     request: 0,
     response: 0,
     error: 0,
 }
 
-export const updateCounter = (type: string) => {
+const updateCounter = (type: string) => {
     return counter[type] += 1;
 }
+
+module.exports = counter;
+module.exports = updateCounter;

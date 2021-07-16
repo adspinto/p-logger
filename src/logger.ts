@@ -1,9 +1,7 @@
-import { updateCounter } from "./counter";
-import { defaults } from "./config";
-import { buildMethodString } from "./stringbuilder";
-import { AxiosError, AxiosResponse } from "axios";
-
-export const customLogger = {
+const _defaults = require("./config/defaults");
+const stringbuilder = require("./stringbuilder");
+const _counter = require("./counter");
+const customLogger = {
     /**
      * Custom Logger to show simple data and detailed data colapsed from axios Requests
      * @param config Axios response
@@ -15,13 +13,13 @@ export const customLogger = {
      * @param config Axios response
      * @returns logs the data
      */
-    success: (response: AxiosResponse) => {
+    success: (response) => {
         const { config, status, data } = response;
         console.groupCollapsed(
-            defaults.tldr,
-            buildMethodString(response),
-            defaults.resNumber,
-            updateCounter(defaults.response),
+            _defaults.tldr,
+            stringbuilder.buildMethodString(response),
+            _defaults.resNumber,
+            _counter.updateCounter(_defaults.response),
             config.url,
             status,
         );
@@ -40,11 +38,11 @@ export const customLogger = {
      * @param error Axios error
      * @returns logs the error data
      */
-    error: (error: AxiosError) => {
+    error: (error) => {
         const info = error.response;
-        updateCounter(defaults.response);
-        updateCounter(defaults.error);
-        console.groupCollapsed(defaults.tldr, buildMethodString(info, defaults.error), info.config.url, info.status);
+        _counter.updateCounter(_defaults.response);
+        _counter.updateCounter(_defaults.error);
+        console.groupCollapsed(_defaults.tldr, stringbuilder.buildMethodString(info, _defaults.error), info.config.url, info.status);
         console.log({
             baseURL: info.config.baseURL,
             url: info.config.url,
@@ -56,3 +54,5 @@ export const customLogger = {
         return Promise.reject(error);
     },
 };
+
+module.exports = customLogger;

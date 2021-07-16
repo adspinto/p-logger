@@ -1,7 +1,6 @@
-import { AxiosResponse } from "axios";
-import { defaults } from "./config";
+const defaults = require("./config/defaults");
 
-export const buildMethodString = (config: AxiosResponse, type: string = defaults.response) => {
+const buildMethodString = (config, type: string = defaults.response) => {
     const logMethodPost = config.config?.method?.length === 4 ? " " : "";
     const logMethodGetOrPut = config.config?.method?.length === 3;
 
@@ -16,3 +15,5 @@ export const buildMethodString = (config: AxiosResponse, type: string = defaults
             return "";
     }
 }
+
+module.exports = buildMethodString;

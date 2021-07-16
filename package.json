@@ -1,6 +1,6 @@
 {
-  "name": "p-logger",
-  "version": "1.0.0",
+  "name": "@knivesq/p-logger",
+  "version": "1.0.1",
   "description": "Logs request from your preferable request engine",
   "main": "index.js",
   "scripts": {
