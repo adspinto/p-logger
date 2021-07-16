@@ -7,11 +7,12 @@ export const buildMethodString = (config: AxiosResponse, type: string = defaults
 
     switch (type) {
         case defaults.response:
-            return `${config.config.method?.toUpperCase()}${logMethodGetOrPut ? "  " : logMethodPost}`
+            return `${config.config.method?.toUpperCase()}${logMethodGetOrPut ? "  " : logMethodPost}`;
         case defaults.request:
             return "";
         case defaults.error:
-            
-        
+            return `${config.config.method?.toUpperCase()}  `;
+        default:
+            return "";
     }
 }

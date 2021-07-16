@@ -2,6 +2,7 @@ import { updateCounter } from "./counter";
 import { defaults } from "./config";
 import { buildMethodString } from "./stringbuilder";
 import { AxiosError, AxiosResponse } from "axios";
+
 export const customLogger = {
     /**
      * Custom Logger to show simple data and detailed data colapsed from axios Requests
@@ -43,7 +44,7 @@ export const customLogger = {
         const info = error.response;
         updateCounter(defaults.response);
         updateCounter(defaults.error);
-        console.groupCollapsed(defaults.tldr, `${info.config.method?.toUpperCase()}  `, info.config.url, info.status);
+        console.groupCollapsed(defaults.tldr, buildMethodString(info, defaults.error), info.config.url, info.status);
         console.log({
             baseURL: info.config.baseURL,
             url: info.config.url,
