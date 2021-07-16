@@ -1,1 +1,3 @@
-var logger = require("./src/logger");
+
+export * as customLogger from "./src/logger";
+

@@ -2,7 +2,7 @@ type Defaults = {
     tldr: string;
 }
 
-var defaults = {
+export let defaults = {
     tldr: "[TLDR]:",
     resNumber: `ResNo:`,
     reqNumber: `ReqNo:`,
@@ -11,12 +11,9 @@ var defaults = {
     error: "error"
 }
 
-const setConfig = (newDefaults) => {
+export const setConfig = (newDefaults) => {
     defaults = {
         ...defaults,
         ...newDefaults,
     }
 }
-
-module.exports = setConfig;
-module.exports = defaults;

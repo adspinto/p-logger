@@ -1,7 +1,8 @@
-const _defaults = require("./config/defaults");
-const stringbuilder = require("./stringbuilder");
-const _counter = require("./counter");
-const customLogger = {
+import { defaults } from "./config/defaults";
+import { buildMethodString } from "./stringbuilder";
+import { updateCounter } from "./counter";
+
+export const customLogger = {
     /**
      * Custom Logger to show simple data and detailed data colapsed from axios Requests
      * @param config Axios response
@@ -16,10 +17,10 @@ const customLogger = {
     success: (response) => {
         const { config, status, data } = response;
         console.groupCollapsed(
-            _defaults.tldr,
-            stringbuilder.buildMethodString(response),
-            _defaults.resNumber,
-            _counter.updateCounter(_defaults.response),
+            defaults.tldr,
+            buildMethodString(response),
+            defaults.resNumber,
+            updateCounter(defaults.response),
             config.url,
             status,
         );
@@ -40,9 +41,9 @@ const customLogger = {
      */
     error: (error) => {
         const info = error.response;
-        _counter.updateCounter(_defaults.response);
-        _counter.updateCounter(_defaults.error);
-        console.groupCollapsed(_defaults.tldr, stringbuilder.buildMethodString(info, _defaults.error), info.config.url, info.status);
+        updateCounter(defaults.response);
+        updateCounter(defaults.error);
+        console.groupCollapsed(defaults.tldr, buildMethodString(info, defaults.error), info.config.url, info.status);
         console.log({
             baseURL: info.config.baseURL,
             url: info.config.url,
@@ -54,5 +55,3 @@ const customLogger = {
         return Promise.reject(error);
     },
 };
-
-module.exports = customLogger;

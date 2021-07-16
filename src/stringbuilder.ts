@@ -1,6 +1,6 @@
-const defaults = require("./config/defaults");
+import { defaults } from "./config/defaults";
 
-const buildMethodString = (config, type: string = defaults.response) => {
+export const buildMethodString = (config, type: string = defaults.response) => {
     const logMethodPost = config.config?.method?.length === 4 ? " " : "";
     const logMethodGetOrPut = config.config?.method?.length === 3;
 
@@ -15,5 +15,3 @@ const buildMethodString = (config, type: string = defaults.response) => {
             return "";
     }
 }
-
-module.exports = buildMethodString;
