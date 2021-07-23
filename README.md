@@ -12,7 +12,7 @@ yarn add @knivesq/p-logger --dev
 or
 
 ```bash
-npm install @knivesq/p-logger --dev 
+npm install @knivesq/p-logger --save-dev 
 ```
 
 ## Usage
