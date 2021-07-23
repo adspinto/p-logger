@@ -4,6 +4,6 @@ export const counter = {
     error: 0,
 }
 
-export const updateCounter = (type) => {
-    return counter[type] += 1;
+export const updateCounter = (type: string) => {
+    return counter[type as keyof typeof counter] += 1;
 }

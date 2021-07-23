@@ -48,14 +48,14 @@ export const logError = () => (error: AxiosError): Promise<AxiosError> => {
         buildMethodString(info, defaults.error), 
         defaults.errorNumber,
         updateCounter(defaults.error), 
-        info.config.url, info.status
+        info?.config.url, info?.status
     );
     console.log({
-        baseURL: info.config.baseURL,
-        url: info.config.url,
-        responseStatus: info.status,
+        baseURL: info?.config.baseURL,
+        url: info?.config.url,
+        responseStatus: info?.status,
         responseData: info?.data,
-        config: info.config,
+        config: info?.config,
     });
     console.groupEnd();
     return Promise.reject(error);
