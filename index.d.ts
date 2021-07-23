@@ -1,6 +1,4 @@
 import { AxiosError, AxiosResponse } from "axios";
-export declare type CustomLogger = {
-    request: () => void;
-    success: (respose: AxiosResponse) => AxiosResponse,
-    error: (error: AxiosError) => Promise<AxiosError>
-};
+export declare function logRequest(): void;
+export declare function logSuccess(response: AxiosResponse): AxiosResponse;
+export declare function logError(error: AxiosError): Promise<AxiosError>;

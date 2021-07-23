@@ -1,12 +1,12 @@
-// type Defaults = {
-//     tldr?: string;
-//     resNumber?: string;
-//     reqNumber?: string;
-//     errorNumber?: string;
-//     response?: string;
-//     request?: string;
-//     error?: string
-// }
+type Defaults = {
+    tldr?: string;
+    resNumber?: string;
+    reqNumber?: string;
+    errorNumber?: string;
+    response?: string;
+    request?: string;
+    error?: string
+}
 
 export let defaults = {
     tldr: "[TLDR]:",
@@ -18,7 +18,7 @@ export let defaults = {
     error: "error"
 }
 
-export const setConfig = (newDefaults) => {
+export const setConfig = (newDefaults: Defaults) => {
     defaults = {
         ...defaults,
         ...newDefaults,
