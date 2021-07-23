@@ -15,7 +15,7 @@ export const customLogger = {
      * @param config Axios response
      * @returns logs the data
      */
-    success: (response: AxiosResponse): AxiosResponse => {
+    success: (response) => {
         const { config, status, data } = response;
         console.groupCollapsed(
             defaults.tldr,
@@ -40,7 +40,7 @@ export const customLogger = {
      * @param error Axios error
      * @returns logs the error data
      */
-    error: (error: AxiosError): Promise<AxiosError> => {
+    error: (error) => {
         const info = error.response;
         console.groupCollapsed(
             defaults.tldr, 
