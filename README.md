@@ -24,10 +24,10 @@ import { customLogger } from "@knivesq/p-logger";
 axios.interceptors.response.use(customLogger.success, customLogger.error);
 
 // or add multiple apis from axios.create
-   [api, api2, api3].map((api) => {
-        api.interceptors.response.use(customLogger.success, customLogger.error);
-        return api;
-    });
+[api, api2, api3].map((api) => {
+   api.interceptors.response.use(customLogger.success, customLogger.error);
+   return api;
+});
 ```
 
 ## Contributing
