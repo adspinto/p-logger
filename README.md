@@ -18,14 +18,14 @@ npm install @knivesq/p-logger --dev
 ## Usage
 
 ```javascript
-import { customLogger } from "@knivesq/p-logger";
+import { logError, logSuccess } from "@knivesq/p-logger";
 
 // axios interceptors for success response and error
-axios.interceptors.response.use(customLogger.success, customLogger.error);
+axios.interceptors.response.use(logSuccess, logError);
 
 // or add multiple apis from axios.create
 [api, api2, api3].map((api) => {
-   api.interceptors.response.use(customLogger.success, customLogger.error);
+   api.interceptors.response.use(logSuccess, logError);
    return api;
 });
 ```
