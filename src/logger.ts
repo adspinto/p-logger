@@ -41,7 +41,7 @@ export const logRequest = () => {};
  * @param error Axios error
  * @returns logs the error data
 */
-export const logError = () => (error: AxiosError): Promise<AxiosError> => {
+export const logError = (error: AxiosError): Promise<AxiosError> => {
     const info = error.response;
     console.groupCollapsed(
         defaults.tldr, 

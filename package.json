@@ -1,6 +1,6 @@
 {
   "name": "@knivesq/p-logger",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Logs request from your preferable request engine",
   "main": "index.ts",
   "scripts": {
